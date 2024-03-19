@@ -51,21 +51,6 @@
         • It is containing variables data like mails, log files of services.
 
 
-#### Adding password to user: -
-
-        sudo passwd root  now you can create password to root
-        sudo passwd <user_name>  here how you can create password to any user_name you want
-
-
-#### ADDING sudo permissions to user: -
-
-you cannot use sudo in all users to give sudo permissions become root and add the particular user to sudoers file using below commands.
-
-        Sudo visudo 
-        <user_name> ALL=(ALL:ALL)ALL      # add this in visudo
-
- 
-
 ### Basic commands: -
 
 | Command  | Usage                                                                |
@@ -256,6 +241,40 @@ After setting the password for the user, you need to enable password-based authe
         PasswordAuthentication yes
         sudo systemctl reload sshd
         sudo systemctl restart sshd
+
+
+#### Adding password to user: -
+
+        sudo passwd root  now you can create password to root
+        sudo passwd <user_name>  here how you can create password to any user_name you want
+
+
+#### Adding sudo permissions to user with password: -
+
+you cannot use sudo in all users to give sudo permissions become root and add the particular user to sudoers file using below commands.
+
+#### open sudo using (Sudo visudo) : - 
+
+<user_name> ALL=(ALL:ALL)ALL: This line grants the ansibleadmin user full sudo privileges on all hosts. Breaking it down:
+
+        ansibleadmin ALL=(ALL:ALL) ALL
+
+        ansibleadmin: Specifies the username.
+        ALL: Specifies that the user can run commands as any user.
+        (ALL:ALL): Specifies that the user can run commands as any group and on any host.
+        ALL: Specifies that the user can run any command.
+
+
+#### Adding sudo permissions to user without password: -
+
+ansibleadmin ALL=(ALL) NOPASSWD: ALL: This line grants the ansibleadmin user full sudo privileges on all hosts without requiring a password. Breaking it down:
+
+        ansibleadmin: Specifies the username.
+        ALL: Specifies that the user can run commands as any user.
+        (ALL): Specifies that the user can run commands on any host.
+        NOPASSWD: Specifies that no password is required when running sudo commands.
+        ALL: Specifies that the user can run any command.
+        
 
 #### User modifications: -
 
