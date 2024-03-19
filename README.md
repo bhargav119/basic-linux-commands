@@ -49,6 +49,21 @@
 #### Var: -
 
         • It is containing variables data like mails, log files of services.
+
+
+#### Adding password to user: -
+
+        sudo passwd root  now you can create password to root
+        sudo passwd <user_name>  here how you can create password to any user_name you want
+
+
+#### ADDING sudo permissions to user: -
+
+you cannot use sudo in all users to give sudo permissions become root and add the particular user to sudoers file using below commands.
+
+        Sudo visudo 
+        <user_name> ALL=(ALL:ALL)ALL      # add this in visudo
+
  
 
 ### Basic commands: -
